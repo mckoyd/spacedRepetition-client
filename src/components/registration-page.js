@@ -14,7 +14,8 @@ export function RegistrationPage(props) {
     <div className="home">
       <h2>Join the Swedish Farm Yard</h2>
       <RegistrationForm />
-      <Link to="/">Login</Link>
+      <h3>Already a member...log in below</h3>
+      <Link to="/" className="login-link">Login</Link>
     </div>
   );
 }

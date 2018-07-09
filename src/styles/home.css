@@ -1,0 +1,38 @@
+.home {
+  text-align: center;
+  color: white;
+  height: 100%;
+  width: 100%;
+}
+
+.login-form {
+  width: 70%;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.login-form input {
+  margin: 5px 0;
+}
+
+.login-form button, .question-box button {
+  background-color: rgba(0,0,0,0);
+  color: white;
+  margin-top: 10px;
+  padding: 0.75em;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.register-link, .login-link{
+  color: white;
+  text-decoration: none;
+  padding: 0.75em;
+  border: white 1px solid;
+  border-radius: 15px;
+}
+
+.login-link {
+  margin-top: 20px;
+  padding: 0.5em;
+}

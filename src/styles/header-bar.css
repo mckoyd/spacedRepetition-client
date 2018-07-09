@@ -1,0 +1,15 @@
+.header-bar {
+  text-align: center;
+  display: flex;
+  flex-direction: column; 
+  background-color: #3d3314;
+  color: white;
+}
+
+.header-bar button {
+  width: 25%;
+  align-self: center;
+  background-color: rgba(0,0,0,0);
+  color: white;
+  border-radius: 10px;
+}
