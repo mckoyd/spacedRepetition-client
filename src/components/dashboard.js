@@ -19,11 +19,15 @@ export class Dashboard extends React.Component {
         </div>
         <div className="dashboard-name">Name: {this.props.name}</div>
         <div className="dashboard-protected-data">
-                    Protected data: {this.props.protectedData}
+                    Question ID: {this.props.protectedData._id}
         </div>
         <div className="question-box">
-          <h2>There's a VARG, ARRRRRGGG!!</h2>
-          <h3>What is a varg?</h3>
+          <h2>There's a {this.props.protectedData.svWord}, ARRRRRGGG!!</h2>
+          <img src={this.props.protectedData.imgSrc} />
+          <h3>What is a {this.props.protectedData.svWord}?</h3>
+          {/* <video controls="" autoplay="" name="media">
+            <source src={this.props.protectedData.audioUrl} type="audio/mpeg" />
+          </video> */}
           <label htmlFor="answer">Answer: </label>
           <Field component={Input} type="text" name="answer" />
           <button disabled={this.props.pristine || this.props.submitting}
