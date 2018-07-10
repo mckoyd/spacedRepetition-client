@@ -12,6 +12,10 @@ export class Dashboard extends React.Component {
   }
 
   render() {
+    const errorStyle = {
+      border: 'red 2px solid'
+    };
+    let answerCheck = <div></div>;
     return (
       <div className="dashboard">
         <div className="dashboard-username">
@@ -31,9 +35,20 @@ export class Dashboard extends React.Component {
           <label htmlFor="answer">Answer: </label>
           <Field component={Input} type="text" name="answer" />
           <button disabled={this.props.pristine || this.props.submitting}
-            onClick={this.props.handleSubmit(value => console.log(value))}>
+            onClick={this.props.handleSubmit(value => {
+              console.log(value, this.props.protectedData.enWord);
+              if(value.answer === this.props.protectedData.enWord){
+                console.log('right');
+              } else {
+                console.log('wrong');
+              }}
+            )}>
                     Submit
           </button>
+          <button onClick={() => this.props.dispatch(fetchProtectedData())}>
+                    Next
+          </button>
+          {answerCheck}
         </div>
       </div>
     );
@@ -49,5 +64,5 @@ const mapStateToProps = state => ({
 export default requiresLogin()(connect(mapStateToProps)(reduxForm({
   form: 'answer',
   onSubmitFail: (errors, dispatch) =>
-    dispatch(focus('answer', Object.keys(errors)[0]))
+    dispatch(focus('answer', Object.keys(errors)))
 })(Dashboard)));
