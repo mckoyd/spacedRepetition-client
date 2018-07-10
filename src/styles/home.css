@@ -3,6 +3,21 @@
   color: white;
   height: 100%;
   width: 100%;
+  margin: 2em 0;
+}
+
+.home hgroup {
+  padding: 1.5em;
+}
+
+.home h2 {
+  font-size: 1.5em;
+  padding-bottom: 0.5em;
+}
+
+.home h3 {
+  font-size: 1.25em;
+  padding: 1em 0;
 }
 
 .login-form {
@@ -11,28 +26,50 @@
   padding: 5px;
 }
 
+.login-form label {
+  font-size: 1.25em;
+}
+
 .login-form input {
   margin: 5px 0;
+  font-size: 1.25em;
+  text-align: center;
 }
 
 .login-form button, .question-box button {
   background-color: rgba(0,0,0,0);
   color: white;
-  margin-top: 10px;
+  margin: 10px 0;
   padding: 0.75em;
+  width: 40%;
   border-radius: 15px;
   cursor: pointer;
+  font-weight: bold;
+}
+
+.new-members {
+  padding-top: 1em;
+}
+
+.new-members h3 {
+  padding: 2em;
 }
 
 .register-link, .login-link{
   color: white;
   text-decoration: none;
-  padding: 0.75em;
+  padding: 0.75em 2em;
   border: white 1px solid;
   border-radius: 15px;
 }
 
 .login-link {
   margin-top: 20px;
-  padding: 0.5em;
+  padding: 0.5em 2em;
+}
+
+.login-form button:hover, .question-box button:hover, 
+.register-link:hover, .login-link:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: black;
 }

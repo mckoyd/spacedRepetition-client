@@ -13,10 +13,14 @@ export function LandingPage(props) {
 
   return (
     <div className="home">
-      <h2>Welcome...New Swedish Speakers</h2>
-      <h3>Log In Below To Continue Learning</h3>
-      <LoginForm />
-      <div>
+      <div className="members">
+        <hgroup>
+          <h2>Welcome...New Swedish Speakers</h2>
+          <h3>Log In Below To Continue Learning</h3>
+        </hgroup>
+        <LoginForm />
+      </div>
+      <div className="new-members">
         <h3>Not a member...sign up below</h3>
         <Link to="/register" className='register-link'>Register</Link>
       </div>

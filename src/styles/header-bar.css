@@ -4,6 +4,10 @@
   flex-direction: column; 
   background-color: #3d3314;
   color: white;
+  padding: 15px;
+}
+.header-bar h1 {
+  font-size: 2em;
 }
 
 .header-bar button {
@@ -12,4 +16,5 @@
   background-color: rgba(0,0,0,0);
   color: white;
   border-radius: 10px;
+  margin-top: 10px;
 }

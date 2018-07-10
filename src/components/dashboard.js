@@ -36,14 +36,11 @@ export class Dashboard extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  const {currentUser} = state.auth;
-  return {
-    username: state.auth.currentUser.username,
-    name: state.auth.currentUser.displayName,
-    protectedData: state.protectedData.data
-  };
-};
+const mapStateToProps = state => ({
+  username: state.auth.currentUser.username,
+  name: state.auth.currentUser.displayName,
+  protectedData: state.protectedData.data
+});
 
 export default requiresLogin()(connect(mapStateToProps)(reduxForm({
   form: 'answer',

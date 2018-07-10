@@ -19,7 +19,9 @@ export default class Input extends React.Component {
         <div className="form-warning">{this.props.meta.warning}</div>
       );
     }
-
+    const errorStyle = {
+      border: 'red 2px solid'
+    };
     return (
       <div className="form-input">
         <label htmlFor={this.props.input.name}>
@@ -32,6 +34,7 @@ export default class Input extends React.Component {
           id={this.props.input.name}
           type={this.props.type}
           ref={input => (this.input = input)}
+          style={error ? errorStyle : null}
         />
       </div>
     );
