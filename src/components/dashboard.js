@@ -7,18 +7,42 @@ import {fetchProtectedData} from '../actions/protected-data';
 import '../styles/dashboard.css';
 
 export class Dashboard extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      currentAnswer: '',
+      feedback: undefined,
+    }
+
+    this.handleAnswerChange = this.handleAnswerChange.bind(this);
+    this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
+  }
+  
   componentDidMount() {
     this.props.dispatch(fetchProtectedData());
   }
 
+  handleAnswerChange(event) {
+    this.setState({currentAnswer: event.target.value})
+  }
 
-
+  handleAnswerSubmit(event){
+    event.preventDefault();
+    if(this.state.currentAnswer === this.props.protectedData.enWord){
+      this.setState({feedback: 'Correct'});
+    } else {
+      this.setState({feedback: 'Incorrect'});
+    }
+  }
 
   render() {
     let answer;
-    const errorStyle = {
-      border: 'red 2px solid'
-    };
+
+    let feedbackText;
+    if(this.state.feedback !== undefined){
+      feedbackText = this.state.feedback;
+    }
+
     return (
       <div className="dashboard">
         <div className="dashboard-username">
@@ -34,19 +58,31 @@ export class Dashboard extends React.Component {
             console.log(answer);
           })}>
           <h2>There's a {this.props.protectedData.svWord}, ARRRRRGGG!!</h2>
-          <img src={this.props.protectedData.imgSrc} />
+          <img src={this.props.protectedData.imgSrc} alt=''/>
           <h3>What is a {this.props.protectedData.svWord}?</h3>
-          {/* <video controls="" autoplay="" name="media">
-            <source src={this.props.protectedData.audioUrl} type="audio/mpeg" />
-          </video> */}
-          <label htmlFor="answer">Answer: </label>
-          <Field component={Input} type="text" name="answer" />
-          <button disabled={this.props.pristine || this.props.submitting}>
-                    Submit
+          {/* <audio controls autoplay name="media">
+            <source src={this.props.protectedData.audioUrl} type="audio/mpeg">
+          </audio> */}
+
+
+          <form onSubmit={this.handleAnswerSubmit}>
+            <label htmlFor="answer">Answer: </label>
+            <input type="text" name="currentAnswer" value={this.state.currentAnswer} 
+              onChange={this.handleAnswerChange}/>
+            <button disabled={false} type='submit'>
+              Submit
+            </button>
+          </form>
+
+          <button onClick={() => {
+            this.setState({feedback: '', currentAnswer: ''});
+            this.props.dispatch(fetchProtectedData())
+          }}>
+            Next
           </button>
-          <button onClick={() => this.props.dispatch(fetchProtectedData())}>
-                    Next
-          </button>
+          <div className='feedback'>
+            {feedbackText}
+          </div>
         </form>
       </div>
     );
