@@ -29,3 +29,34 @@ export const fetchProtectedData = () => (dispatch, getState) => {
       dispatch(fetchProtectedDataError(err));
     });
 };
+
+export const POST_ANSWER_SUCCESS = 'POST_ANSWER_SUCCESS';
+export const postAnswerSuccess = () => ({
+  type: POST_ANSWER_SUCCESS,
+});
+
+export const POST_ANSWER_ERROR = 'POST_ANSWER_ERROR';
+export const postAnswerError = error => ({
+  type: POST_ANSWER_ERROR,
+  error
+});
+
+export const postAnswer = answer => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/q/answer`, {
+    body: JSON.stringify(answer),
+    method: 'POST',
+    headers: {
+      // Provide our auth token as credentials
+      Authorization: `Bearer ${authToken}`,
+      'content-type': 'application/json'
+    }
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(() => {
+      dispatch(postAnswerSuccess());
+    })
+    .catch(err => {
+      dispatch(postAnswerError(err));
+    });
+}; 

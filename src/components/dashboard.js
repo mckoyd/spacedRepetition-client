@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Field, reduxForm, focus} from 'redux-form';
 import Input from './input';
 import requiresLogin from './requires-login';
-import {fetchProtectedData} from '../actions/protected-data';
+import {fetchProtectedData, postAnswer} from '../actions/protected-data';
 import '../styles/dashboard.css';
 import { changeToNext, changeToSubmit, getAnswer, resetAnswer } from '../actions';
 
@@ -23,13 +23,15 @@ export class Dashboard extends React.Component {
         </div>
         <div className="dashboard-name">Name: {this.props.name}</div>
         <div className="dashboard-protected-data">
-                    Question ID: {this.props.protectedData._id}
         </div>
         <form className="question-box"
           onSubmit={this.props.handleSubmit(value => {
             if(this.props.buttonText === 'SUBMIT'){
               this.props.dispatch(changeToNext());
               this.props.dispatch(getAnswer(value.answer));
+              const answer = {'correct': value.answer === this.props.protectedData.enWord};
+              console.log(answer);
+              this.props.dispatch(postAnswer(answer));
             } else if (this.props.buttonText === 'NEXT'){
               this.props.reset();
               this.props.dispatch(resetAnswer());
