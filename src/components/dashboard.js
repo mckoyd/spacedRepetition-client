@@ -11,11 +11,14 @@ export class Dashboard extends React.Component {
     this.props.dispatch(fetchProtectedData());
   }
 
+
+
+
   render() {
+    let answer;
     const errorStyle = {
       border: 'red 2px solid'
     };
-    let answerCheck = <div></div>;
     return (
       <div className="dashboard">
         <div className="dashboard-username">
@@ -25,7 +28,11 @@ export class Dashboard extends React.Component {
         <div className="dashboard-protected-data">
                     Question ID: {this.props.protectedData._id}
         </div>
-        <div className="question-box">
+        <form className="question-box"
+          onSubmit={this.props.handleSubmit(value => {
+            answer = value.answer;
+            console.log(answer);
+          })}>
           <h2>There's a {this.props.protectedData.svWord}, ARRRRRGGG!!</h2>
           <img src={this.props.protectedData.imgSrc} />
           <h3>What is a {this.props.protectedData.svWord}?</h3>
@@ -34,22 +41,13 @@ export class Dashboard extends React.Component {
           </video> */}
           <label htmlFor="answer">Answer: </label>
           <Field component={Input} type="text" name="answer" />
-          <button disabled={this.props.pristine || this.props.submitting}
-            onClick={this.props.handleSubmit(value => {
-              console.log(value, this.props.protectedData.enWord);
-              if(value.answer === this.props.protectedData.enWord){
-                console.log('right');
-              } else {
-                console.log('wrong');
-              }}
-            )}>
+          <button disabled={this.props.pristine || this.props.submitting}>
                     Submit
           </button>
           <button onClick={() => this.props.dispatch(fetchProtectedData())}>
                     Next
           </button>
-          {answerCheck}
-        </div>
+        </form>
       </div>
     );
   }
@@ -58,7 +56,7 @@ export class Dashboard extends React.Component {
 const mapStateToProps = state => ({
   username: state.auth.currentUser.username,
   name: state.auth.currentUser.displayName,
-  protectedData: state.protectedData.data
+  protectedData: state.protectedData.data,
 });
 
 export default requiresLogin()(connect(mapStateToProps)(reduxForm({
