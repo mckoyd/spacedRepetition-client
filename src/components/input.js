@@ -25,13 +25,6 @@ export class Input extends React.Component {
         <div className="form-warning">{this.props.meta.warning}</div>
       );
     }
-    let answerFeedback;
-    if(this.input){
-      this.input.value===this.props.protectedData.enWord ? answerFeedback = (
-        <div className="feedback">RIGHT!</div>
-      ) : console.log('nope');
-      
-    }
     const errorStyle = {
       border: 'red 2px solid'
     };
@@ -41,7 +34,6 @@ export class Input extends React.Component {
           {this.props.label}
           {error}
           {warning}
-          {answerFeedback}
         </label>
         <input
           {...this.props.input}
