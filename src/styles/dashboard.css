@@ -4,13 +4,36 @@
   color: white;
 }
 
+.dashboard h2 {
+  font-size: 2em;
+}
+
 .question-box {
   border: white 1px solid;
-  padding: 5px;
+  padding: 1em;
   width: 75%;
   margin: 10px auto;
 }
 
-.question-box .form-input {
-  margin-bottom: 10px;
+.question-box img {
+  height: 9em;
 }
+
+.question-box h2, .question-box h3 {
+  padding: 1em;
+  font-size: 1.5em;
+}
+
+.question-box .form-input {
+  margin-bottom: 0.5em;
+}
+.question-box label {
+  font-size: 1.2em;
+}
+
+.question-box input {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+

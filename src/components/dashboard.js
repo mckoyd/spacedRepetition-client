@@ -13,15 +13,15 @@ export class Dashboard extends React.Component {
   }
 
   render() {
-    const errorStyle = {
-      border: 'red 2px solid'
-    };
+    // const errorStyle = {
+    //   border: 'red 2px solid'
+    // };
     return (
       <div className="dashboard">
         <div className="dashboard-username">
-                    Username: {this.props.username}
+          <h2>Välkommen,</h2>
         </div>
-        <div className="dashboard-name">Name: {this.props.name}</div>
+        <div className="dashboard-name"><h2>{this.props.name}!</h2></div>
         <div className="dashboard-protected-data">
         </div>
         <form className="question-box"
@@ -30,7 +30,6 @@ export class Dashboard extends React.Component {
               this.props.dispatch(changeToNext());
               this.props.dispatch(getAnswer(value.answer));
               const answer = {'correct': value.answer === this.props.protectedData.enWord};
-              console.log(answer);
               this.props.dispatch(postAnswer(answer));
             } else if (this.props.buttonText === 'NEXT'){
               this.props.reset();
@@ -39,9 +38,9 @@ export class Dashboard extends React.Component {
               this.props.dispatch(changeToSubmit());
             }
           })}>
-          <h2>There's a {this.props.protectedData.svWord}, ARRRRRGGG!!</h2>
-          <img src={this.props.protectedData.imgSrc} />
-          <h3>What is a {this.props.protectedData.svWord}?</h3>
+          <h2>Watch out there's a {this.props.protectedData.svWord}! Wait...</h2>
+          <img src={this.props.protectedData.imgSrc} alt={this.props.protectedData.svWord}/>
+          <h3>{this.props.name}, do you know what a {this.props.protectedData.svWord} is?</h3>
           {/* <video controls="" autoplay="" name="media">
             <source src={this.props.protectedData.audioUrl} type="audio/mpeg" />
           </video> */}
@@ -50,8 +49,8 @@ export class Dashboard extends React.Component {
           <button disabled={this.props.pristine || this.props.submitting}>
             {this.props.buttonText}
           </button>
-          <h3>{this.props.answer===this.props.protectedData.enWord ? 'Right!' :
-            this.props.answer==='' ? null : 'Wrong!' }</h3>
+          <h4>{this.props.answer===this.props.protectedData.enWord ? 'That\'s right, this is a ' + this.props.protectedData.enWord + ' in English! Move on the next animal...' :
+            this.props.answer==='' ? null : 'Sorry this is a ' + this.props.protectedData.enWord + ' in English! Try the next animal...' }</h4>
         </form>
       </div>
     );
