@@ -17,7 +17,7 @@ export class Dashboard extends React.Component {
     //   border: 'red 2px solid'
     // };
     return (
-      <div className="dashboard">
+      <div className="dashboard" role='main'>
         <div className="dashboard-username">
           <h2>Välkommen,</h2>
         </div>
@@ -51,7 +51,7 @@ export class Dashboard extends React.Component {
           </button>
           <h4>{this.props.answer===this.props.protectedData.enWord ? 'That\'s right, this is a ' + this.props.protectedData.enWord + ' in English! Move on the next animal...' 
           + 'You\'re percentage right for this question is ' +  ((this.props.protectedData.timesCorrect + 1)/(this.props.protectedData.timesAnswered + 1)*100).toFixed(0) + '%.':
-            this.props.answer==='' ? null : 'Sorry this is a ' + this.props.protectedData.enWord + ' in English! Try the next animal...'
+            this.props.answer==='' ? 'Good luck...' : 'Sorry this is a ' + this.props.protectedData.enWord + ' in English! Try the next animal...'
             + 'You\'re percentage right for this question is ' +  ((this.props.protectedData.timesCorrect)/(this.props.protectedData.timesAnswered + 1)*100).toFixed(0) + '%.'
           }</h4>
         </form>

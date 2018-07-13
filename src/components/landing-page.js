@@ -12,7 +12,7 @@ export function LandingPage(props) {
   }
 
   return (
-    <div className="home">
+    <div className="home" role='main'>
       <div className="members">
         <hgroup>
           <h2>Welcome...New Swedish Speakers</h2>

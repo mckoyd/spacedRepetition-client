@@ -30,11 +30,11 @@ export class Input extends React.Component {
     };
     return (
       <div className="form-input">
-        <label htmlFor={this.props.input.name}>
-          {this.props.label}
-          {error}
-          {warning}
-        </label>
+        {/* <label htmlFor={this.props.input.name}>
+          {this.props.label} */}
+        {error}
+        {warning}
+        {/* </label> */}
         <input
           {...this.props.input}
           id={this.props.input.name}

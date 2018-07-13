@@ -19,13 +19,13 @@ export class HeaderBar extends React.Component {
       );
     }
     return (
-      <div className="header-bar">
+      <header className="header-bar" role='banner'>
         <hgroup>
           <h1>The Swedish Farm Yard</h1>
           <h2>A Place to Learn to Speak Swedish</h2>
         </hgroup>
         {logOutButton}
-      </div>
+      </header>
     );
   }
 }
