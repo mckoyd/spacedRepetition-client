@@ -1,5 +1,8 @@
 # The Swedish Farm Yard App 
 
+[Deployed](https://swedish-yard.herokuapp.com/dashboard)
+[Back-End Repository](https://github.com/mckoyd/spacedRepetition-server) 
+
 ## Technology Used
 ### React-Redux architecture with use of redux forms and react router.
 
