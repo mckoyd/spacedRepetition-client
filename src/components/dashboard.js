@@ -49,8 +49,11 @@ export class Dashboard extends React.Component {
           <button disabled={this.props.pristine || this.props.submitting}>
             {this.props.buttonText}
           </button>
-          <h4>{this.props.answer===this.props.protectedData.enWord ? 'That\'s right, this is a ' + this.props.protectedData.enWord + ' in English! Move on the next animal...' :
-            this.props.answer==='' ? null : 'Sorry this is a ' + this.props.protectedData.enWord + ' in English! Try the next animal...' }</h4>
+          <h4>{this.props.answer===this.props.protectedData.enWord ? 'That\'s right, this is a ' + this.props.protectedData.enWord + ' in English! Move on the next animal...' 
+          + 'You\'re percentage right for this question is ' +  ((this.props.protectedData.timesCorrect + 1)/(this.props.protectedData.timesAnswered + 1)*100).toPrecision(2) + '%.':
+            this.props.answer==='' ? null : 'Sorry this is a ' + this.props.protectedData.enWord + ' in English! Try the next animal...'
+            + 'You\'re percentage right for this question is ' +  ((this.props.protectedData.timesCorrect)/(this.props.protectedData.timesAnswered + 1)*100).toPrecision(2) + '%.'
+          }</h4>
         </form>
       </div>
     );
